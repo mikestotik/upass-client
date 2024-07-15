@@ -1,0 +1,38 @@
+.app-logo {
+  display: flex;
+  align-items: center;
+
+  &-image {
+    flex: 0 0 auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &-info {
+    &-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+
+    &-desc {
+      opacity: 0.5;
+      font-size: 14px;
+    }
+  }
+
+  &-menu {
+    margin-left: auto;
+
+    i {
+      opacity: 0.75;
+    }
+  }
+}

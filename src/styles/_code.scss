@@ -1,0 +1,43 @@
+.input-code-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.input-code-container {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.input-code {
+  display: inline-block;
+
+  .input-code-cell {
+    width: 40px;
+    height: 40px;
+    margin: 0 6px;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 4px;
+    background: #36363d;
+    color: #ffffff;
+    border: 1px solid #424242;
+
+    &:focus {
+      outline: 2px solid #007bff;
+    }
+
+    &::placeholder {
+      color: #aab7c4;
+    }
+
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+  &-error {
+    margin-top: 8px;
+  }
+}

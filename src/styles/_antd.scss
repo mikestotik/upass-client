@@ -1,0 +1,89 @@
+//
+//// Fix RangePicker for mobile view
+//@media(max-width: 576px) {
+//  .ant-picker-panels {
+//    flex-direction: column;
+//  }
+//}
+//
+//.color-picker {
+//  .ant-color-picker-color-block {
+//    height: 100%;
+//    width: 100%;
+//  }
+//}
+//
+//.ant-input-affix-wrapper .ant-input-prefix {
+//  margin-inline-end: 8px;
+//}
+//
+//
+//.ant-result {
+//  padding: 80px 32px;
+//  height: 100%;
+//}
+//
+//
+//.ant-modal.ant-modal-confirm.ant-modal-confirm-info {
+//  width: auto !important;
+//
+//  @media(min-width: 560px) {
+//    max-width: 510px;
+//  }
+//}
+//
+.ant-modal {
+  & &-content {
+    background: var(--body-background);
+  }
+
+  &-confirm &-confirm-title {
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  &-close-x {
+    color: #ffffff90;
+  }
+}
+
+.ant-input-prefix {
+  i {
+    margin-right: 8px;
+  }
+}
+
+.ant-slider {
+  margin: 0;
+}
+
+.ant-message {
+  .ant-message-notice-wrapper {
+    .ant-message-notice-content {
+      background: #34373b;
+      color: #ffffff;
+    }
+  }
+}
+
+
+//.ant-drawer {
+//  &-content-wrapper {
+//    height: max-content !important;
+//    max-height: calc(100% - 64px) !important;
+//    overflow: auto;
+//
+//    //.ant-drawer-content {
+//    //  background: #121212;
+//    //}
+//  }
+//
+//  &-body {
+//    display: flex;
+//    flex-direction: column;
+//  }
+//}
+
+//.ant-input-outlined {
+//  background: transparent;
+//}
