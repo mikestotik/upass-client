@@ -1,10 +1,11 @@
 import http from '../../config/http.config.ts';
 import { CoreApiUri } from '../../const/api.const.ts';
+import { AccountCreated } from '../account/account.interface.ts';
 import { LoginResponse, SignInPayload, SignUpPayload } from './auth.interfaces.ts';
 
 class AuthService {
   public async signUp(payload: SignUpPayload) {
-    return http.post<LoginResponse>(CoreApiUri.ACCOUNT, payload).then((res) => res.data);
+    return http.post<AccountCreated>(CoreApiUri.ACCOUNT, payload).then((res) => res.data);
   }
 
   public async signIn(payload: SignInPayload) {

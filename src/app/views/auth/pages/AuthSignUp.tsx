@@ -19,14 +19,14 @@ const formValidationSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .label('Confirm password')
     .matches(Validation.regExpPassword, { message: Message.passwordValidation })
-    .oneOf([Yup.ref('password'), ''], Message.passwordNotMatch)
+    .oneOf([ Yup.ref('password'), '' ], Message.passwordNotMatch)
     .required(),
 });
 
 export const AuthSignUp = () => {
   const { authStore } = useStore();
 
-  const [form] = Form.useForm();
+  const [ form ] = Form.useForm();
 
   const navigate = useNavigate();
 
@@ -43,34 +43,40 @@ export const AuthSignUp = () => {
   const onSubmit = useCallback(
     async (values: SignUpPayload, { setSubmitting }: FormikHelpers<SignUpPayload>) => {
       try {
-        await authStore.signUp(values);
+        const { needConfirm } = await authStore.signUp(values);
 
-        navigate(`${RoutePaths.AUTH_SIGN_UP_CONFIRMATION}?email=${values.email}`);
+        message.success('Account Created!');
+
+        if (needConfirm) {
+          navigate(`${ RoutePaths.AUTH_SIGN_UP_CONFIRMATION }?email=${ values.email }`);
+        } else {
+          navigate(RoutePaths.AUTH_SIGN_IN);
+        }
       } catch (e) {
         await handleSubmitError(e as AxiosError);
       }
       setSubmitting(false);
     },
-    [authStore, handleSubmitError, navigate],
+    [ authStore, handleSubmitError, navigate ],
   );
 
   return (
     <AuthPage desc="Create a new account with an email address.">
-      <Formik initialValues={formInitialValues} validationSchema={formValidationSchema} onSubmit={onSubmit}>
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, isValid }) => (
-          <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      <Formik initialValues={ formInitialValues } validationSchema={ formValidationSchema } onSubmit={ onSubmit }>
+        { ({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, isValid }) => (
+          <Form form={ form } layout="vertical" onFinish={ handleSubmit }>
             <Form.Item label="Email">
               <Input
                 size="large"
                 type="email"
                 name="email"
-                status={errors.email && touched.email ? 'error' : ''}
+                status={ errors.email && touched.email ? 'error' : '' }
                 placeholder="username@domain.com"
                 autoComplete="on"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                prefix={<i className="icon icon-email" />}
+                onChange={ handleChange }
+                onBlur={ handleBlur }
+                value={ values.email }
+                prefix={ <i className="icon icon-email" /> }
               />
               <InputError name="email" />
             </Form.Item>
@@ -80,13 +86,13 @@ export const AuthSignUp = () => {
                 size="large"
                 type="password"
                 name="password"
-                status={errors.password && touched.password ? 'error' : ''}
+                status={ errors.password && touched.password ? 'error' : '' }
                 placeholder="Enter your Password"
                 autoComplete="on"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                prefix={<i className="icon icon-lock" />}
+                onChange={ handleChange }
+                onBlur={ handleBlur }
+                value={ values.password }
+                prefix={ <i className="icon icon-lock" /> }
               />
               <InputError name="password" />
             </Form.Item>
@@ -96,13 +102,13 @@ export const AuthSignUp = () => {
                 size="large"
                 type="password"
                 name="confirmPassword"
-                status={errors.confirmPassword && touched.confirmPassword ? 'error' : ''}
+                status={ errors.confirmPassword && touched.confirmPassword ? 'error' : '' }
                 placeholder="Re-type Password"
                 autoComplete="on"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.confirmPassword}
-                prefix={<i className="icon icon-lock" />}
+                onChange={ handleChange }
+                onBlur={ handleBlur }
+                value={ values.confirmPassword }
+                prefix={ <i className="icon icon-lock" /> }
               />
               <InputError name="confirmPassword" />
             </Form.Item>
@@ -113,9 +119,9 @@ export const AuthSignUp = () => {
               <Button
                 size="large"
                 htmlType="submit"
-                type={isSubmitting ? 'default' : 'primary'}
-                disabled={!isValid || isSubmitting}
-                loading={isSubmitting}
+                type={ isSubmitting ? 'default' : 'primary' }
+                disabled={ !isValid || isSubmitting }
+                loading={ isSubmitting }
                 block
               >
                 Create account
@@ -123,10 +129,10 @@ export const AuthSignUp = () => {
             </Form.Item>
 
             <div className="auth-back">
-              <NavLink to={RoutePaths.AUTH_SIGN_IN}>Sign In</NavLink>
+              <NavLink to={ RoutePaths.AUTH_SIGN_IN }>Sign In</NavLink>
             </div>
           </Form>
-        )}
+        ) }
       </Formik>
     </AuthPage>
   );

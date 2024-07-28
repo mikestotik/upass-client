@@ -57,8 +57,7 @@ export class AuthStore {
   };
 
   public async signUp(values: SignUpPayload) {
-    const res = await authService.signUp(values);
-    console.log(res);
+    return authService.signUp(values);
   }
 
   public async signOut() {

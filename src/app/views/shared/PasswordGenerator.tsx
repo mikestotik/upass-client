@@ -142,12 +142,10 @@ export const PasswordGenerator = observer(({ onClose }: PasswordGeneratorProps) 
 						</div>
 					</Form.Item>
 
-					<Form.Item>
-						<div className="form-actions">
-							<Button htmlType="submit">Generate</Button>
-							<Button htmlType="button" onClick={ onApply } disabled={ !password.length }>Apply</Button>
-						</div>
-					</Form.Item>
+					<div className="form-actions">
+						<Button htmlType="submit">Generate</Button>
+						<Button htmlType="button" onClick={ onApply } disabled={ !password.length }>Apply</Button>
+					</div>
 				</Form>
 			) }
 		</Formik>

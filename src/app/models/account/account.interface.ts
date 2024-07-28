@@ -1,5 +1,6 @@
 import { Role } from '../../enums/role.enum.ts';
 
+
 export interface User {
   id: number;
   created: Date;
@@ -10,4 +11,9 @@ export interface User {
   lang: string;
   status: string;
   roles: Role[];
+}
+
+
+export interface AccountCreated {
+  needConfirm: boolean;
 }

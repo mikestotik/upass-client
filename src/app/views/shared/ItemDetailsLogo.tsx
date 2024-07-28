@@ -8,12 +8,15 @@ interface ItemDetailsLogoProps {
 export const ItemDetailsLogo = ({ title, type }: ItemDetailsLogoProps) => {
   return (
     <div className="details-logo">
-      <div className="details-logo-icon">
+      {/* <div className="details-logo-icon">
         <i className="icon icon-enter" />
-      </div>
+      </div> */}
       <div className="details-logo-info">
-        <div className="details-logo-info-title">{title}</div>
-        <div className="details-logo-info-category">{type}</div>
+        <div className="details-logo-info-title">
+          <i className="icon icon-enter" />
+          <span>{ title }</span>
+        </div>
+        <div className="details-logo-info-category">{ type }</div>
       </div>
     </div>
   );

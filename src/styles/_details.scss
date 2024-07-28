@@ -17,7 +17,7 @@
   }
 
   &-info {
-    padding: 24px 0;
+    padding: 16px 16px;
     display: flex;
     align-items: center;
 
@@ -76,6 +76,12 @@
 
     &-title {
       font-size: 22px;
+      display: flex;
+      align-items: center;
+
+      i {
+        margin-right: 12px;
+      }
     }
 
     &-category {
@@ -91,8 +97,9 @@
 .details-control-item {
   background: transparent;
   border-radius: 6px;
-  padding: 0 8px;
+  padding: 4px 16px;
   cursor: pointer;
+  margin-bottom: 12px;
 
   &:hover {
     background: #ffffff10;
